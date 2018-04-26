@@ -28,7 +28,7 @@
                     <label class="active" for="name">Link to Photo Image (required)</label>
 
                     <h5><strong>Question 1</strong></h5>
-                    <p>I really enjoy Saturday classes with Todd Pickell.</p>
+                    <p>You really enjoy Saturday classes with Todd Pickell.</p>
                     <select data-placeholder="" class="browser-default" id="q1">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -39,7 +39,7 @@
                     </select>
 
                     <h5><strong>Question 2</strong></h5>
-                    <p>I think it's okay to my brush my teeth while pooping in order to save time in the morning.</p>
+                    <p>You think it's okay to my brush my teeth while pooping in order to save time in the morning.</p>
                     <select data-placeholder="" class="browser-default" id="q2">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -50,7 +50,7 @@
                     </select>
 
                     <h5><strong>Question 3</strong></h5>
-                    <p>I still think the word "fart" and farts in general are funny.</p>
+                    <p>You still think the word "fart" and farts in general are funny.</p>
                     <select data-placeholder="" class="browser-default" id="q3">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -61,7 +61,7 @@
                     </select>
 
                     <h5><strong>Question 4</strong></h5>
-                    <p>I think it's okay to pull out in front of someone and drive slow even though there's nobody behind them.</p>
+                    <p>You think it's okay to pull out in front of someone and drive slow even though there's nobody behind them.</p>
                     <select data-placeholder="" class="browser-default" id="q4">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -72,7 +72,7 @@
                     </select>
 
                     <h5><strong>Question 5</strong></h5>
-                    <p>I believe that Donald J. Trump is an awesome person.</p>
+                    <p>You believe that Donald J. Trump is an awesome person.</p>
                     <select data-placeholder="" class="browser-default" id="q5">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -83,7 +83,7 @@
                     </select>
 
                     <h5><strong>Question 6</strong></h5>
-                    <p>I believe in biting the dog that bit you, aka saving a beer for tommorrow morning's hangover.</p>
+                    <p>You believe in biting the dog that bit you, aka saving a beer for tommorrow morning's hangover.</p>
                     <select data-placeholder="" class="browser-default" id="q6">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -94,7 +94,7 @@
                     </select>
 
                     <h5><strong>Question 7</strong></h5>
-                    <p>I believe that Dane Cook is the funniest comic alive.</p>
+                    <p>You believe that Dane Cook is the funniest comic alive.</p>
                     <select data-placeholder="" class="browser-default" id="q7">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -105,7 +105,7 @@
                     </select>
 
                     <h5><strong>Question 8</strong></h5>
-                    <p>I think that everybody has had a fart be more than just a fart at least once in their lifetime.</p>
+                    <p>You think that everybody has had a fart be more than just a fart at least once in their lifetime.</p>
                     <select data-placeholder="" class="browser-default" id="q8">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -116,7 +116,7 @@
                     </select>
 
                     <h5><strong>Question 9</strong></h5>
-                    <p>I believe that if you're not first you're last.</p>
+                    <p>You believe that if you're not first you're last.</p>
                     <select data-placeholder="" class="browser-default" id="q9">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -127,7 +127,7 @@
                     </select>
 
                     <h5><strong>Question 10</strong></h5>
-                    <p>I think that Tom Brady has a very punchable face.</p>
+                    <p>You think that Tom Brady has a very punchable face.</p>
                     <select data-placeholder="" class="browser-default" id="q10">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -164,24 +164,24 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#submitBtn").on("click", function() {
-                    //form validation
+                    // Form validation
                     function validateForm() {
                         var isValid = true;
                         $('.validate').each(function() {
-                            if ($(this).val() === ''){
+                            if ($(this).val() === '') {
                                 isValid = false;
                             }
                         });
                         $('.browser-default').each(function() {
-                            if ($(this).val() === ""){
+                            if ($(this).val() === "") {
                                 isValid = false;
                             }
                         });
                         return isValid;
                     }
-                    //if everything is filled
+                    // If everything is filled
                     if (validateForm() == true) {
-                        //creates a new friend from the values submitted
+                        // Creates a new friend from the values submitted
                         var newFriend = {
                             name: $('#name').val().trim(),
                             profilePic: $('#photo').val().trim(),
@@ -198,9 +198,9 @@
                                 $('#q10').val(),
                             ]
                         };
-                        //Grabs current URL of website
+                        // Grabs current URL of website
                         var currentURL = window.location.origin;
-                        //AJAX posts the data to friends API.
+                        // AJAX posts the data to friends API.
                         $.post(currentURL + "/api/friends", newFriend, function(data) {
                             //Grab the result from the AJAX post so that the best match's name and photo are displayed.
                             $("#matchName").text(data.name);
@@ -208,7 +208,7 @@
                         });
                         // Show the modal with the best match
                             $('.modal').modal();
-                        //clear form after submission
+                        // Clear form after submission
                         $('#name').val("");
                         $('#photo').val("");
                         $('#q1').val("");
@@ -224,7 +224,7 @@
                     } else {
                         alert("Please fill out ALL fields before submitting survey!")
                     }
-                    // return false;
+                    // Return false;
                 });
             });
             </script>
