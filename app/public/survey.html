@@ -50,7 +50,7 @@
                     </select>
 
                     <h5><strong>Question 3</strong></h5>
-                    <p>You still think the word "fart" and farts in general are funny.</p>
+                    <p>You like Coldplay.</p>
                     <select data-placeholder="" class="browser-default" id="q3">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -83,7 +83,7 @@
                     </select>
 
                     <h5><strong>Question 6</strong></h5>
-                    <p>You believe in biting the dog that bit you, aka saving a beer for tommorrow morning's hangover.</p>
+                    <p>You have woken up one morning, only to look around and wonder how in the world you got there.</p>
                     <select data-placeholder="" class="browser-default" id="q6">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -94,7 +94,7 @@
                     </select>
 
                     <h5><strong>Question 7</strong></h5>
-                    <p>You believe that Dane Cook is the funniest comic alive.</p>
+                    <p>You have drunk dialed the wrong person before.</p>
                     <select data-placeholder="" class="browser-default" id="q7">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -116,7 +116,7 @@
                     </select>
 
                     <h5><strong>Question 9</strong></h5>
-                    <p>You believe that if you're not first you're last.</p>
+                    <p>You have a tattoo somewhere on your body of an ex's name.</p>
                     <select data-placeholder="" class="browser-default" id="q9">
                         <option value="">Choose an Option</option>
                         <option value="1">1 (Strongly Disagree)</option>
@@ -151,7 +151,7 @@
                 <div class="modal-content">
                     <h4>Meet Your New BFF</h4>
                     <h5 id="matchName"></h5>
-                    <img id="matchPic" src="" alt="No Image" width="250px">
+                    <img id="matchPic" src="" width="250px">
                 </div>
 
                 <div class="modal-footer">
@@ -202,6 +202,7 @@
                         var currentURL = window.location.origin;
                         // AJAX posts the data to friends API.
                         $.post(currentURL + "/api/friends", newFriend, function(data) {
+                            console.log(data);
                             //Grab the result from the AJAX post so that the best match's name and photo are displayed.
                             $("#matchName").text(data.name);
                             $("#matchPic").attr("src", data.profilePic);
