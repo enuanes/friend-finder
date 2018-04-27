@@ -16,29 +16,31 @@ module.exports = function(app) {
         var bestMatch = 0;
 
         // Runs through all current friends in list
-        for (var i = 0; i < friendList.length; i++) {
+        for(var i=0; i<friendList.length; i++) {
             var scoresDiff = 0;
-            // Runs through scores to compare friends
-            for (var j = 0; j < newFriendScores.length; i++) {
-                scoresDiff += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
+            //run through scores to compare friends
+            for(var j=0; j<newFriendScores.length; j++) {
+              scoresDiff += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
             }
-
-            // Push results into scoresArray
+      
+            //push results into scoresArray
             scoresArray.push(scoresDiff);
-        }
-
-        // After all friends are compared, find best match
-        for (var i = 0; i < scoresArray.length; i++) {
+          }
+      
+          //after all friends are compared, find best match
+          for(var i=0; i<scoresArray.length; i++) {
             if(scoresArray[i] <= scoresArray[bestMatch]) {
-                bestMatch = [i];
+              bestMatch = i;
             }
-        }
+          }
+
+         // Pushes new submission into the friendList array
+         friendList.push(req.body);
 
         // Return bestmatch data
         var bff = friendList[bestMatch];
         res.json(bff);
 
-        // Pushes new submission into the friendList array
-        friendList.push(req.body);
+       
     });
 };
